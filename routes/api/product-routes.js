@@ -16,12 +16,14 @@ router.get('/', (req, res) => {
         attributes: ['id'],
       },
     ],
-  }).then((dbPostData) =>
-    res.json(dbPostData).catch((err) => {
+  })
+    .then((dbProductData) => {
+      res.json(dbProductData)
+    })
+    .catch((err) => {
       console.log(err)
       res.status(500).json(err)
-    }),
-  )
+    })
 })
 
 // get one product
@@ -79,7 +81,9 @@ router.post('/', (req, res) => {
       // if no product tags, just respond
       res.status(200).json(product)
     })
-    .then((productTagIds) => res.status(200).json(productTagIds))
+    .then((productTagIds) => {
+      res.status(200).json(productTagIds)
+    })
     .catch((err) => {
       console.log(err)
       res.status(400).json(err)

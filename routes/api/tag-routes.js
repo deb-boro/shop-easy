@@ -14,13 +14,15 @@ router.get('/', (req, res) => {
         attributes: ['id', 'product_name', 'price', 'stock', 'category_id'],
       },
     ],
-  }).then((dbTagData) =>
-    res.json(dbTagData).catch((err) => {
+  })
+    .then((dbTagData) => {
+      res.json(dbTagData)
+    })
+    .catch((err) => {
       console.log(err)
       //The HTTP status code 500 is a generic error response. It means that the server encountered an unexpected condition that prevented it from fulfilling the request.
       res.status(500).json(err)
-    }),
-  )
+    })
 })
 
 router.get('/:id', (req, res) => {
